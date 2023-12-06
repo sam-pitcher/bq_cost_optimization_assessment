@@ -5,6 +5,7 @@ SUM(slot_ms)/1000 AS total_slots_this_second
 FROM
 -- `{INFOSCHEMA_PROJECT_NAME}.region-eu.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_FOLDER`
 `{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.timeline_metrics
+`{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}_job_metrics
 WHERE
 -- job_type = "QUERY AND
 period_start BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL {DAYS_AGO} day) AND current_timestamp
