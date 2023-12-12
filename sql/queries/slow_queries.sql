@@ -8,7 +8,7 @@ WITH
     SUM(slot_ms) / 1000 AS total_slot_sec,
     SUM(total_bytes_processed * 1e-12) AS total_processed_tb
   FROM
-    `{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}_timeline_metrics_by_job
+    `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.timeline_metrics_by_job_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
   WHERE 1=1
     {PERIOD_START_WHERE_CLAUSE}
     {PROJECT_WHERE_CLAUSE}
@@ -28,7 +28,7 @@ SELECT
   ROUND(SUM(total_processed_tb), 2) AS totalProcessedTb,
 FROM
   baseQuery
-  INNER JOIN `{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}_job_metrics as jobs_table ON jobs_table.job_id=baseQuery.job_id
+  INNER JOIN `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.job_metrics_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE} as jobs_table ON jobs_table.job_id=baseQuery.job_id
 GROUP BY
   1,
   2,

@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}_timeline_metrics_by_job
+CREATE OR REPLACE TABLE `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.timeline_metrics_by_job_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
 PARTITION BY
   DATE(period_start)
 CLUSTER BY
@@ -15,7 +15,7 @@ SELECT
   SUM(total_bytes_processed) total_bytes_processed,
   SUM(period_shuffle_ram_usage_ratio) period_shuffle_ram_usage_ratio,
   SUM(period_estimated_runnable_units) period_estimated_runnable_units
-FROM `{INFOSCHEMA_PROJECT_NAME}`.`region-eu`.INFORMATION_SCHEMA.JOBS_TIMELINE_BY_FOLDER jbp
+FROM `{INFOSCHEMA_PROJECT_NAME}`.`region-{REGION}`.INFORMATION_SCHEMA.JOBS_TIMELINE{INFO_TABLE_SUFFIX} jbp
 WHERE
   job_creation_time BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL 365 day) AND current_timestamp
     AND jbp.statement_type != 'SCRIPT'

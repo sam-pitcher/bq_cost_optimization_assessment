@@ -53,7 +53,7 @@ FROM(
             , bytes_shuffled
             , bytes_spilled
         FROM
-            `{CONTROL_PROJECT_NAME}.{DATASET_NAME}`.{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}_job_metrics
+            `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.job_metrics_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
     )
 )
 GROUP BY 1
