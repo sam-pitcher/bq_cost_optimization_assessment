@@ -8,7 +8,8 @@ FROM
 `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.timeline_metrics_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
 WHERE
 -- job_type = "QUERY" AND
-period_start BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL {DAYS_AGO} day) AND current_timestamp
+-- period_start BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL {DAYS_AGO} day) AND current_timestamp
+period_start BETWEEN "{START_DATE}" and "{END_DATE}"
 {PROJECT_WHERE_CLAUSE}
 
 GROUP BY

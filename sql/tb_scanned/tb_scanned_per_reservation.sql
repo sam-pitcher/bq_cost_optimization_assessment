@@ -9,7 +9,8 @@ FROM
 -- `{PROJECT_NAME}.region-eu.INFORMATION_SCHEMA.JOBS_BY_FOLDER`
 `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.job_metrics_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
 WHERE
-creation_time BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL {DAYS_AGO} day) AND current_timestamp
+-- creation_time BETWEEN TIMESTAMP_SUB(current_timestamp, INTERVAL {DAYS_AGO} day) AND current_timestamp
+creation_time BETWEEN "{START_DATE}" and "{END_DATE}"
 {PROJECT_WHERE_CLAUSE}
 -- AND job_type = 'QUERY'
 -- AND statement_type <> 'SCRIPT'
