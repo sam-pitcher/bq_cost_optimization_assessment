@@ -37,7 +37,7 @@ FROM
 baseQuery
 GROUP BY
 1,2
-HAVING avg_queries_per_day > {QUERIES_PER_DAY}
+-- HAVING avg_queries_per_day > {QUERIES_PER_DAY}
 ORDER BY
 4 desc
 
