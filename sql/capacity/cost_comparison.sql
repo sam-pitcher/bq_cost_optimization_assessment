@@ -21,10 +21,10 @@ SELECT
 -- SUM(day_count) AS day_count,
 SUM(query_count) AS total_queries,
 
-ROUND(SUM(total_processed_tb / ({DAYS_AGO}/30.0)) * 6.25, 0) AS approx_30day_on_demand_cost,
-ROUND(SUM((total_slot_sec / ({DAYS_AGO}/30.0)) / 3600.0) * 0.044, 0) AS approx_30day_standard_cost,
-ROUND(SUM((total_slot_sec / ({DAYS_AGO}/30.0)) / 3600.0) * 0.066, 0) AS approx_30day_enterprise_cost,
-ROUND(SUM((total_slot_sec / ({DAYS_AGO}/30.0)) / 3600.0) * 0.0396, 0) AS approx_30day_enterprise_cost_3yr,
+ROUND(SUM(total_processed_tb / (DATE_DIFF("{END_DATE}", "{START_DATE}", day)/30.0)) * 6.25, 0) AS approx_30day_on_demand_cost,
+ROUND(SUM((total_slot_sec / (DATE_DIFF("{END_DATE}", "{START_DATE}", day)/30.0)) / 3600.0) * 0.044, 0) AS approx_30day_standard_cost,
+ROUND(SUM((total_slot_sec / (DATE_DIFF("{END_DATE}", "{START_DATE}", day)/30.0)) / 3600.0) * 0.066, 0) AS approx_30day_enterprise_cost,
+ROUND(SUM((total_slot_sec / (DATE_DIFF("{END_DATE}", "{START_DATE}", day)/30.0)) / 3600.0) * 0.0396, 0) AS approx_30day_enterprise_cost_3yr,
 
 FROM
 baseQuery
