@@ -1,5 +1,12 @@
 # BQ Cost Optimization Assessment
 
+## Set Up
+- Navigate to colab.google and open a new notebook.
+- Click GitHub on the left nav bar and search for: sam-pitcher/bq_cost_optimization_assessment
+- Select big_query_optimization.ipynb
+- Save a copy
+- Ensure you clone the files noted in the Clone files from git section
+
 ## Summary
 The purpose of this notebook is to summarize BigQuery pricing for your customer and Google to process SQL queries needed to monitor BigQuery cost and performance.
 
