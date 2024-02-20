@@ -9,7 +9,7 @@ WITH
     SUM(total_bytes_processed * 1e-12) AS total_processed_tb
   FROM
     `{DESTINATION_PROJECT_NAME}.{DESTINATION_DATASET_NAME}`.timeline_metrics_by_job_{INFOSCHEMA_PROJECT_NAME_FOR_TABLE}
-  WHERE 1=1
+  WHERE
     period_start BETWEEN "{START_DATE}" and "{END_DATE}"
     -- {PERIOD_START_WHERE_CLAUSE}
     {PROJECT_WHERE_CLAUSE}
